@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { PROJECTS, type Project } from "../data/projects";
-import { ROUTES } from "../router/paths";
+import { ROUTES } from "../../app/router/paths";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (

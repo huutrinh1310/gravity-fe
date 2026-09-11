@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import { HomePage } from "./pages/HomePage";
+import { HomePage } from "./pages/home/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import { ProjectPage } from "./pages/ProjectPage";
-import { ROUTES } from "./router/paths";
+import { ProjectPage } from "./pages/projects/ProjectPage";
+import { ROUTES } from "./app/router/paths";
 
 function App() {
   return (

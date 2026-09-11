@@ -1,8 +1,9 @@
-import { NowPlayingCard, PlayerDock } from "../components/MusicPlayer";
-import { ProjectCard } from "../components/ProjectCard";
-import { SiteHeader } from "../components/SiteHeader";
-import { PROJECTS } from "../data/projects";
-import { useMusicPlayer } from "../hooks/useMusicPlayer";
+import { NowPlayingCard, PlayerDock } from "@/shared/components/MusicPlayer";
+import { ProjectCard } from "@/shared/components/ProjectCard";
+import { SiteHeader } from "@/shared/components/SiteHeader";
+import { PROJECTS } from "@/shared/data/projects";
+import { useMusicPlayer } from "@/shared/hooks/useMusicPlayer";
+
 
 const STACK = ["TypeScript", "Go", "Rust", "React", "Node", "Postgres", "K8s", "GraphQL"];
 const LOG = [

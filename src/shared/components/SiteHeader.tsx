@@ -1,7 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router";
 import { ThemeToggle } from "./ThemeToggle";
-import { ROUTES } from "../router/paths";
+import { ROUTES } from "../../app/router/paths";
 
 const NAV = [
   { label: "work", href: ROUTES.sections.work },

@@ -1,11 +1,11 @@
 import { Link, useParams } from "react-router";
 import { ArrowLeft } from "lucide-react";
-import { PlayerDock } from "../components/MusicPlayer";
-import { OtherProjects } from "../components/ProjectCard";
-import { SiteHeader } from "../components/SiteHeader";
-import { getProject } from "../data/projects";
-import { useMusicPlayer } from "../hooks/useMusicPlayer";
-import { ROUTES } from "../router/paths";
+import { PlayerDock } from "../../shared/components/MusicPlayer";
+import { OtherProjects } from "../../shared/components/ProjectCard";
+import { SiteHeader } from "../../shared/components/SiteHeader";
+import { getProject } from "../../shared/data/projects";
+import { useMusicPlayer } from "../../shared/hooks/useMusicPlayer";
+import { ROUTES } from "../../app/router/paths";
 
 export function ProjectPage() {
   const { slug = "" } = useParams();

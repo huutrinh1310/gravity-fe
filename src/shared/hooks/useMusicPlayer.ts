@@ -23,6 +23,7 @@ export function useMusicPlayer(): PlayerState {
   const [time, setTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [pendingSrc, setPendingSrc] = useState<string | null>(null);
+
   useEffect(() => {
     const audio = new Audio(DEFAULT_TRACK.src);
     audio.loop = true;
@@ -36,6 +37,7 @@ export function useMusicPlayer(): PlayerState {
     audio.addEventListener("loadedmetadata", onMeta);
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
+
     return () => {
       audio.pause();
       audio.removeEventListener("timeupdate", onTime);
@@ -45,6 +47,7 @@ export function useMusicPlayer(): PlayerState {
       audioRef.current = null;
     };
   }, []);
+
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio || !pendingSrc) return;
@@ -52,12 +55,14 @@ export function useMusicPlayer(): PlayerState {
     audio.currentTime = 0;
     void audio.play().catch(() => setPlaying(false));
   }, [pendingSrc]);
+
   const loadUrl = (url: string, name?: string) => {
     const trimmed = url.trim();
     if (!trimmed) return;
     setTitle(name ?? trimmed.split("/").pop()?.split("?")[0] ?? "Custom track");
     setPendingSrc(trimmed);
   };
+
   const loadFile = (file: File) => {
     if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
     const url = URL.createObjectURL(file);
@@ -65,11 +70,13 @@ export function useMusicPlayer(): PlayerState {
     setTitle(file.name.replace(/\.[^.]+$/, ""));
     setPendingSrc(url);
   };
+
   const toggle = () => {
     const audio = audioRef.current;
     if (!audio) return;
     if (audio.paused) void audio.play().catch(() => setPlaying(false));
     else audio.pause();
   };
+
   return { playing, title, time, duration, toggle, loadUrl, loadFile };
 }

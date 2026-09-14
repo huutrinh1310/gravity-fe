@@ -1,0 +1,1 @@
+type TError = unknown;

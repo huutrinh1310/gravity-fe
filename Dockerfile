@@ -6,6 +6,11 @@ WORKDIR /app
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
+ARG VITE_API_BASE_URL
+ARG VITE_PUBLIC_URL
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+ENV VITE_PUBLIC_URL=$VITE_PUBLIC_URL
+
 # Copy source code to Docker image and build app
 COPY . .
 RUN bun run build

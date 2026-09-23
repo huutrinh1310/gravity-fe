@@ -24,6 +24,7 @@ dist-ssr
 *.sw
 
 # ignore environment variable files
+.env
 *.env
 
 # Ignore lock files

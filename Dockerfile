@@ -18,9 +18,16 @@ RUN bun run build
 # Stage 2: Run
 FROM oven/bun:1-alpine AS runner
 WORKDIR /app
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package.json ./
-RUN bun install --frozen-lockfile --production
+
+ARG VITE_API_BASE_URL
+ARG VITE_PUBLIC_URL
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+ENV VITE_PUBLIC_URL=$VITE_PUBLIC_URL
+
+COPY --from=builder --chown=bun:bun /app/dist ./dist
+COPY --from=builder --chown=bun:bun /app/node_modules ./node_modules
+COPY --from=builder --chown=bun:bun /app/package.json ./
+COPY --from=builder --chown=bun:bun /app/vite.config.ts ./
 USER bun
 EXPOSE 3000
 CMD ["bun", "run", "start"]

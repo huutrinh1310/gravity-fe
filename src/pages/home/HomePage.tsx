@@ -3,7 +3,6 @@ import { ProjectCard } from "@/shared/components/ProjectCard";
 import { SiteHeader } from "@/shared/components/SiteHeader";
 import { PROJECTS } from "@/shared/data/projects";
 import { useMusicPlayer } from "@/shared/hooks/useMusicPlayer";
-import { useProfileQuery } from "@/shared/hooks/useProfile";
 
 const STACK = ["TypeScript", "Go", "Rust", "React", "Node", "Postgres", "K8s", "GraphQL"];
 const LOG = [

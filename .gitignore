@@ -21,4 +21,10 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.sw
+
+# ignore environment variable files
+*.env
+
+# Ignore lock files
+*.lock

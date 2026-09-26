@@ -1,0 +1,40 @@
+name: Deploy
+on:
+  workflow_run:
+    workflows: ["Code check"]
+    branches: [main]
+    types:
+      - completed
+env:
+  VITE_GITHUB_API_ENDPOINT: https://api.github.com/graphql
+  # Nx 18 enables using plugins to infer targets by default
+  # This is disabled for existing workspaces to maintain compatibility
+  # For more info, see: https://nx.dev/concepts/inferred-tasks
+  NX_ADD_PLUGINS: false
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Preinstall *-linux-x64-gnu
+        run: npm add @swc/core-linux-x64-gnu @esbuild/linux-x64 @rollup/rollup-linux-x64-gnu --save-optional --verbose --foreground-scripts
+
+      - run: npm ci --prefer-offline --verbose --foreground-scripts
+
+      - name: Install and Build 🔧
+        run: npx nx build main
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.3.0
+        with:
+          branch: gh-pages
+          folder: apps/main/dist

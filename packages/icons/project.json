@@ -1,0 +1,34 @@
+{
+  "name": "icons",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/icons/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "svgr": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "./packages/icons",
+        "command": "svgr --out-dir ./src/components ./src/icons"
+      }
+    },
+    "tsc": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "./packages/icons",
+        "command": "tsc -p tsconfig.lib.json"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "./packages/icons",
+        "command": "rm -rf ./src/components && nx run icons:svgr"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  }
+}

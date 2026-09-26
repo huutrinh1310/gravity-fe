@@ -1,78 +1,56 @@
-# React + TypeScript + Vite
+![CI](https://github.com/dipiash/nx-vite-react-ts-mantine-boilerplate/actions/workflows/CheckPullRequest.yml/badge.svg?branch=main)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Gravity portfolio in an Nx monorepo
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The portfolio app lives in `apps/main` and is built with React, Vite, TypeScript, Tailwind CSS, and Nx. Review the [Repository Guidelines](AGENTS.md) for project structure and contribution expectations. For workflow details, see the [Contributing Guide](CONTRIBUTING.md) and [Security Policy](SECURITY.md).
 
-## React Compiler
+### Prerequisites
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+bun install
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Start the app with:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+bun run dev
 ```
+
+Open http://localhost:3000/. The portfolio app does not require API credentials or GraphQL code generation.
+
+### Examples
+
+- [GitHub repository list](https://dipiash.github.io/nx-vite-react-ts-mantine-boilerplate/)
+
+### App screenshots
+
+#### Desktop version
+
+<img alt="app_screenshot_1.png" height="200" src="docs/app_screenshot_1.png"/>
+
+<img alt="app_screenshot_2.png" height="200" src="docs/app_screenshot_2.png"/>
+
+#### Mobile version
+
+<img alt="app_screenshot_3.png" height="200" src="docs/app_screenshot_3.png"/>
+
+### Features
+
+- [Nx 22](https://nx.dev)
+- [React 19](https://reactjs.org)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- React Router
+- [Storybook 10](https://storybook.js.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite 8](https://vitejs.dev/)
+- [Vitest](https://vitest.dev/)
+- [ESLint](https://eslint.org/)
+- HMR (Hot Module Replacement)
+
+## License
+This code is licensed under the MIT License. 
+You can find the license file [here](/LICENSE).

@@ -1,0 +1,154 @@
+.root {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.thead {
+  width: 100%;
+  background: #f4f6f8;
+}
+
+.tbody {
+  width: 100%;
+}
+
+.tr {
+  display: flex;
+  width: 100%;
+}
+
+.thead .tr {
+  border-bottom: 1px solid #dddddd;
+  background-color: rgba(192 221 220 / 53%);
+}
+
+.tbody .tr:not(:last-child) {
+  border-bottom: 1px solid #dddddd;
+}
+
+.tbody .tr:nth-of-type(2n) {
+  background: #f8f8f8;
+}
+
+.th,
+.td {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  color: #111111;
+  text-align: right;
+}
+
+.th {
+  text-align: left;
+  border-top: none;
+  font-weight: 600;
+}
+
+.th + .th,
+.td + .td {
+  border-left: 1px solid #dddddd;
+}
+
+.td:first-child {
+  text-align: left;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.empty {
+  display: flex;
+}
+
+.empty > * {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  color: #6b7280;
+  text-align: left;
+}
+
+@media (max-width: 720px) {
+  .root {
+    border: none;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .thead {
+    display: none;
+  }
+
+  .tbody,
+  .tr,
+  .empty {
+    display: block;
+    width: 100%;
+  }
+
+  .tr,
+  .empty {
+    margin-bottom: 12px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .tr:nth-of-type(2n) {
+    background: #f8f8f8;
+  }
+
+  .tr:last-child,
+  .empty:last-child {
+    margin-bottom: 0;
+  }
+
+  .td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border: none;
+    border-bottom: 1px solid #dddddd;
+    padding: 8px 12px;
+    text-align: left;
+  }
+
+  .td:last-child {
+    border-bottom: none;
+  }
+
+  .td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #6b7280;
+    margin-right: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+
+  .empty {
+    border: 1px solid #dddddd;
+  }
+
+  .empty > * {
+    display: block;
+    border: none;
+    padding: 8px 12px;
+  }
+
+  .th + .th,
+  .td + .td {
+    border-left: none;
+  }
+}

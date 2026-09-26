@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "bundler",
+    "importHelpers": true,
+    "moduleDetection": "force",
+    "target": "ES2022",
+    "module": "esnext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "exactOptionalPropertyTypes": true,
+    "baseUrl": "./packages",
+    "paths": {
+      "@nx-vite-react-ts-mantine-boilerplate/graphql": ["graphql/src"],
+      "@nx-vite-react-ts-mantine-boilerplate/icons": ["icons/src"],
+      "@nx-vite-react-ts-mantine-boilerplate/ui-kit": ["ui-kit/src"]
+    }
+  },
+  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "global.d.ts"],
+  "exclude": ["node_modules", "tmp", "dist", "coverage"]
+}

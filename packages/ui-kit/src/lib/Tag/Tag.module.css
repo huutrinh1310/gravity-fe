@@ -1,0 +1,46 @@
+.mantine-Pill-root {
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.625rem;
+}
+
+.mantine-Pill-label {
+  font-weight: 500;
+  line-height: 1rem;
+  color: var(--foreground);
+}
+
+.tag-default {
+  background-color: var(--muted-foreground);
+  border: 1px solid var(--muted-foreground);
+  color: var(--muted);
+}
+
+.tag-default.tag-filled {
+  background-color: var(--muted);
+  border: 1px solid var(--muted);
+  color: var(--muted-foreground);
+}
+
+.tag-error {
+  background-color: var(--accent-foreground);
+  border: 1px solid var(--accent-foreground);
+  color: var(--accent);
+}
+
+.tag-error.tag-filled {
+  background-color: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--accent-foreground);
+}
+
+.tag-primary {
+  background-color: var(--background);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.tag-primary.tag-filled {
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+  color: var(--primary-foreground);
+}

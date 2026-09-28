@@ -3,6 +3,8 @@ import React from 'react'
 import '@mantine/core/styles.css'
 import type { Preview } from '@storybook/react-vite'
 
+import './style.css'
+
 import { ThemeProvider } from '../src/providers'
 
 const preview: Preview = {

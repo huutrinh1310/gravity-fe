@@ -1,0 +1,24 @@
+.dashboard-scrollbar {
+  scrollbar-color: var(--chrome-2) transparent;
+  scrollbar-width: thin;
+}
+
+.dashboard-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dashboard-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dashboard-scrollbar::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--chrome-2);
+  background-clip: padding-box;
+}
+
+.dashboard-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+  background-clip: padding-box;
+}

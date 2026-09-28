@@ -1,19 +1,19 @@
 export interface ProfileType {
-  name: string;
-  title: string;
   description: string;
-  skills: string[];
+  name: string;
   projects: ProjectType[];
+  skills: string[];
+  title: string;
+}
+
+export interface ProjectType {
+  description: string;
+  id: string;
+  name: string;
+  tags: string[];
 }
 
 export interface SkillType {
   id: string;
   name: string;
-}
-
-export interface ProjectType {
-  id: string;
-  name: string;
-  description: string;
-  tags: string[];
 }

@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import { Group } from '@mantine/core'
+import { Group } from '@mantine/core';
 
-import { Button } from '../Button'
-import { type PaginationPropertiesInterface } from './Pagination.types'
+import { Button } from '../Button';
+import { type PaginationPropertiesInterface } from './Pagination.types';
 
 export const Pagination = ({
   isNextDisabled = false,
@@ -19,4 +19,4 @@ export const Pagination = ({
       Next {'>'}
     </Button>
   </Group>
-)
+);

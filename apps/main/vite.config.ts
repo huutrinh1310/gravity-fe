@@ -1,14 +1,13 @@
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-import path from 'node:path'
-import analyze from 'rollup-plugin-analyzer'
-import visualizer from 'rollup-plugin-visualizer'
-import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react';
+import path from 'node:path';
+import analyze from 'rollup-plugin-analyzer';
+import visualizer from 'rollup-plugin-visualizer';
+import { defineConfig } from 'vite';
 
-const isDevelopment = Boolean(process.env.DEV ?? process.env.NODE_ENV === 'development')
-const isAnalyzeEnabled = Boolean(process.env.ANALYZE)
-const isNoMinify = Boolean(process.env.NO_MINIFY)
-const isSourceMapsEnabled = Boolean(process.env.SOURCE_MAPS)
+const isDevelopment = Boolean(process.env.DEV ?? process.env.NODE_ENV === 'development');
+const isAnalyzeEnabled = Boolean(process.env.ANALYZE);
+const isNoMinify = Boolean(process.env.NO_MINIFY);
+const isSourceMapsEnabled = Boolean(process.env.SOURCE_MAPS);
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,11 +18,11 @@ export default defineConfig({
       output: {
         manualChunks: (id) => {
           if (id.includes('mantine')) {
-            return '@mantine'
+            return '@mantine';
           }
 
           if (id.includes('node_modules')) {
-            return 'vendor'
+            return 'vendor';
           }
         },
       },
@@ -42,7 +41,7 @@ export default defineConfig({
     },
     sourcemap: isSourceMapsEnabled,
   },
-  plugins: [react(), tailwindcss()],
+  plugins: [react()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -55,4 +54,4 @@ export default defineConfig({
     host: false,
     port: 3000,
   },
-})
+});

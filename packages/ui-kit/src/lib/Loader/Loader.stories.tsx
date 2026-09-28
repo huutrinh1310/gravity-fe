@@ -1,6 +1,6 @@
-import { type Meta, type StoryObj } from '@storybook/react-vite'
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 
-import { Loader as LoaderComponent } from './Loader'
+import { Loader as LoaderComponent } from './Loader';
 
 export default {
   title: 'Feedback/Loader',
@@ -8,16 +8,16 @@ export default {
     children: 'Content goes here once loading completes.',
   },
   component: LoaderComponent,
-} as Meta<typeof LoaderComponent>
+} as Meta<typeof LoaderComponent>;
 
 export const Loading: StoryObj<typeof LoaderComponent> = {
   args: {
     loading: true,
   },
-}
+};
 
 export const Idle: StoryObj<typeof LoaderComponent> = {
   args: {
     loading: false,
   },
-}
+};

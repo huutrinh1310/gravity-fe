@@ -1,7 +1,7 @@
-import { dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const getAbsolutePath = (value: string): string => dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)))
+const getAbsolutePath = (value: string): string => dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
 
 export default {
   core: {
@@ -16,4 +16,4 @@ export default {
     reactDocgen: 'react-docgen-typescript',
   },
   addons: [getAbsolutePath('@chromatic-com/storybook'), getAbsolutePath('@storybook/addon-docs')],
-}
+};

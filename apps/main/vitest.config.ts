@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
-import { defineConfig, mergeConfig } from 'vitest/config'
+import { defineConfig, mergeConfig } from 'vitest/config';
 
-import baseConfig from './vite.config'
+import baseConfig from './vite.config';
 
 export default mergeConfig(
   baseConfig,
@@ -12,4 +12,4 @@ export default mergeConfig(
       setupFiles: ['./vitest.setup.ts'],
     },
   }),
-)
+);

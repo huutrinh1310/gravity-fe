@@ -1,9 +1,9 @@
-import react from '@vitejs/plugin-react'
-import path from 'node:path'
-import { defineConfig } from 'vite'
-import dts from 'vite-dts'
+import react from '@vitejs/plugin-react';
+import path from 'node:path';
+import { defineConfig } from 'vite';
+import dts from 'vite-dts';
 
-const isExternal = (id: string) => !id.startsWith('.') && !path.isAbsolute(id)
+const isExternal = (id: string) => !id.startsWith('.') && !path.isAbsolute(id);
 
 export default defineConfig({
   build: {
@@ -16,4 +16,4 @@ export default defineConfig({
     },
   },
   plugins: [dts(), react()],
-})
+});

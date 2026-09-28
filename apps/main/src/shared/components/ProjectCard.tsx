@@ -1,32 +1,40 @@
-import { Link } from 'react-router'
-import { PROJECTS, type Project } from '../data/projects'
-import { ROUTES } from '../../app/router/paths'
+import { Link } from 'react-router';
 
-export function ProjectCard({ project }: { project: Project }) {
-  return (
-    <Link
-      to={ROUTES.projectDetail(project.slug)}
-      className="chrome animate-rise block overflow-hidden rounded-xl transition-transform duration-300 hover:-translate-y-1"
-    >
-      <img src={project.img} alt={project.alt} loading="lazy" width={1024} height={640} className="aspect-[16/10] w-full object-cover" />
-      <div className="p-4">
-        <div className="flex items-center justify-between">
-          <h3 className="font-medium">{project.title}</h3>
-          <span className="font-mono text-[10px] text-primary">{project.year}</span>
-        </div>
-        <p className="mt-1 text-sm text-muted-foreground">{project.desc}</p>
-        <p className="mt-3 font-mono text-[10px] text-muted-foreground">{project.tags}</p>
-      </div>
-    </Link>
-  )
-}
+import { Box, Group, SimpleGrid, Text, Title } from '@mantine/core';
+
+import { ROUTES } from '../../app/router/paths';
+import { type Project, PROJECTS } from '../data/projects';
 
 export function OtherProjects({ currentSlug }: { currentSlug: string }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <SimpleGrid className="other-projects-grid" cols={{ base: 1, xs: 2 }} spacing="1rem">
       {PROJECTS.filter((project) => project.slug !== currentSlug).map((project) => (
         <ProjectCard key={project.slug} project={project} />
       ))}
-    </div>
-  )
+    </SimpleGrid>
+  );
+}
+
+export function ProjectCard({ project }: { project: Project }) {
+  return (
+    <Link className="project-card chrome reveal" to={ROUTES.projectDetail(project.slug)}>
+      <Box alt={project.alt} className="project-card-image" component="img" height={640} src={project.img} width={1024} loading="lazy" />
+      <Box className="project-card-content">
+        <Group className="project-card-heading" justify="space-between">
+          <Title className="project-card-title" order={3}>
+            {project.title}
+          </Title>
+          <Text className="project-card-year" component="span">
+            {project.year}
+          </Text>
+        </Group>
+        <Text className="project-card-description" component="p">
+          {project.desc}
+        </Text>
+        <Text className="project-card-tags" component="p">
+          {project.tags}
+        </Text>
+      </Box>
+    </Link>
+  );
 }

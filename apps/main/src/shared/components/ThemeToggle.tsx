@@ -1,31 +1,32 @@
-import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
+import { useEffect, useState } from 'react';
 
-const STORAGE_KEY = "kv-theme";
+import { ActionIcon } from '@mantine/core';
+import { Moon, Sun } from 'lucide-react';
+
+const STORAGE_KEY = 'kv-theme';
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    const stored = localStorage.getItem(STORAGE_KEY) as "light" | "dark" | null;
-    return stored ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    const stored = localStorage.getItem(STORAGE_KEY) as 'dark' | 'light' | null;
+
+    return stored ?? (globalThis.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   });
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.documentElement.classList.toggle('dark', theme === 'dark');
     localStorage.setItem(STORAGE_KEY, theme);
   }, [theme]);
 
   return (
-    <button
+    <ActionIcon
+      aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      className="theme-toggle chromebtn"
+      size={32}
       type="button"
-      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-      onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
-      className="chromebtn grid size-8 cursor-pointer place-items-center rounded-full transition-transform hover:-translate-y-0.5"
+      variant="unstyled"
+      onClick={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
     >
-      {theme === "dark" ? (
-        <Sun className="size-4" aria-hidden="true" />
-      ) : (
-        <Moon className="size-4" aria-hidden="true" />
-      )}
-    </button>
+      {theme === 'dark' ? <Sun aria-hidden="true" size={16} /> : <Moon aria-hidden="true" size={16} />}
+    </ActionIcon>
   );
 }

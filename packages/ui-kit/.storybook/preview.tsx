@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import '@mantine/core/styles.css'
-import type { Preview } from '@storybook/react-vite'
+import '@mantine/core/styles.css';
+import type { Preview } from '@storybook/react-vite';
 
-import './style.css'
+import './style.css';
 
-import { ThemeProvider } from '../src/providers'
+import { ThemeProvider } from '../src/providers';
 
 const preview: Preview = {
   decorators: [(renderStory) => <ThemeProvider>{renderStory()}</ThemeProvider>],
@@ -19,6 +19,6 @@ const preview: Preview = {
     },
   },
   tags: ['autodocs'],
-}
+};
 
-export default preview
+export default preview;

@@ -1,95 +1,122 @@
-import { Link, useParams } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
-import { PlayerDock } from "../../shared/components/MusicPlayer";
-import { OtherProjects } from "../../shared/components/ProjectCard";
-import { SiteHeader } from "../../shared/components/SiteHeader";
-import { getProject } from "../../shared/data/projects";
-import { useMusicPlayer } from "../../shared/hooks/useMusicPlayer";
-import { ROUTES } from "../../app/router/paths";
+import { Link, useParams } from 'react-router-dom';
+
+import { Box, Button, Group, SimpleGrid, Stack, Text, Title } from '@mantine/core';
+import { ArrowLeft } from 'lucide-react';
+
+import { ROUTES } from '../../app/router/paths';
+import { SiteHeader } from '../../shared/components/layout/SiteHeader';
+import { PlayerDock } from '../../shared/components/MusicPlayer';
+import { OtherProjects } from '../../shared/components/ProjectCard';
+import { getProject } from '../../shared/data/projects';
+import { useMusicPlayer } from '../../shared/hooks/useMusicPlayer';
 
 export function ProjectPage() {
-  const { slug = "" } = useParams();
+  const { slug = '' } = useParams();
   const project = getProject(slug);
   const player = useMusicPlayer();
-  if (!project) return <ProjectMissing />;
+
+  if (!project) {
+    return <ProjectMissing />;
+  }
 
   return (
-    <div className="min-h-screen bg-background font-grotesk text-foreground">
+    <Box className="project-page">
       <SiteHeader detail />
-      <main className="mx-auto max-w-5xl px-6 pb-24">
-        <section className="animate-rise pt-12">
-          <p className="font-mono text-xs text-muted-foreground">(case study) {project.timeline}</p>
-          <h1 className="chrometxt mt-3 text-[clamp(2.5rem,7vw,4.5rem)] leading-[0.95] tracking-tight">
+      <Box className="project-page-main" component="main">
+        <Box className="project-intro reveal" component="section">
+          <Text className="eyebrow" component="p">
+            (case study) {project.timeline}
+          </Text>
+          <Title className="project-title chrometxt" order={1}>
             {project.title}
-          </h1>
-          <p className="mt-4 max-w-[56ch] text-pretty text-muted-foreground">{project.overview}</p>
-          <div className="mt-5 flex flex-wrap gap-2">
+          </Title>
+          <Text className="project-overview muted-copy" component="p">
+            {project.overview}
+          </Text>
+          <Group className="project-stack" gap="0.5rem">
             {project.stack.map((item) => (
-              <span key={item} className="pill rounded-full px-3 py-1 text-sm">
+              <Text key={item} className="tech-pill" component="span">
                 {item}
-              </span>
+              </Text>
             ))}
-          </div>
-        </section>
-        <img
-          src={project.img}
-          alt={project.alt}
-          width={1024}
-          height={640}
-          className="chrome animate-rise mt-8 aspect-[16/9] w-full rounded-2xl object-cover p-1"
-        />
-        <section className="animate-rise mt-8 grid gap-4 sm:grid-cols-3">
+          </Group>
+        </Box>
+        <img alt={project.alt} className="case-study-image chrome reveal" height={640} src={project.img} width={1024} />
+        <SimpleGrid className="project-metrics reveal" cols={{ base: 1, xs: 3 }} component="section" spacing="1rem">
           {project.metrics.map((metric) => (
-            <div key={metric.label} className="chrome rounded-xl p-4">
-              <p className="chrometxt text-3xl tracking-tight">{metric.value}</p>
-              <p className="mt-1 font-mono text-[11px] text-muted-foreground">{metric.label}</p>
-            </div>
+            <Box key={metric.label} className="metric-block chrome">
+              <Text className="metric-value chrometxt" component="p">
+                {metric.value}
+              </Text>
+              <Text className="metric-label" component="p">
+                {metric.label}
+              </Text>
+            </Box>
           ))}
-        </section>
-        <section className="mt-12 grid gap-10 border-t border-foreground/10 pt-10 md:grid-cols-2">
-          <div className="animate-rise">
-            <span className="font-mono text-xs text-muted-foreground">(a) role</span>
-            <h2 className="mt-1 mb-3 text-2xl tracking-tight">What I did</h2>
-            <p className="text-sm text-muted-foreground">{project.role}</p>
-            <p className="mt-2 font-mono text-xs text-primary">{project.tags}</p>
-          </div>
-          <div className="animate-rise [animation-delay:100ms]">
-            <span className="font-mono text-xs text-muted-foreground">(b) highlights</span>
-            <h2 className="mt-1 mb-3 text-2xl tracking-tight">Engineering notes</h2>
-            <ul className="space-y-3">
+        </SimpleGrid>
+        <SimpleGrid className="project-details" cols={{ base: 1, sm: 2 }} component="section" spacing="2.5rem">
+          <Box className="reveal">
+            <Text className="eyebrow" component="span">
+              (a) role
+            </Text>
+            <Title className="section-title project-detail-title" order={2}>
+              What I did
+            </Title>
+            <Text className="detail-copy" component="p">
+              {project.role}
+            </Text>
+            <Text className="project-tags" component="p">
+              {project.tags}
+            </Text>
+          </Box>
+          <Box className="reveal home-log-delay">
+            <Text className="eyebrow" component="span">
+              (b) highlights
+            </Text>
+            <Title className="section-title project-detail-title" order={2}>
+              Engineering notes
+            </Title>
+            <Stack className="highlight-list" component="ul" gap="0.75rem">
               {project.highlights.map((highlight) => (
-                <li key={highlight} className="flex gap-3 text-sm text-muted-foreground">
-                  <span className="pt-0.5 font-mono text-xs text-primary">—</span>
-                  {highlight}
-                </li>
+                <Group key={highlight} align="flex-start" className="highlight-entry" component="li" gap="0.75rem" wrap="nowrap">
+                  <Text className="highlight-marker" component="span">
+                    —
+                  </Text>
+                  <Text className="detail-copy" component="span">
+                    {highlight}
+                  </Text>
+                </Group>
               ))}
-            </ul>
-          </div>
-        </section>
-        <section className="mt-12 border-t border-foreground/10 pt-10">
-          <h2 className="mb-5 text-2xl tracking-tight">Other work</h2>
+            </Stack>
+          </Box>
+        </SimpleGrid>
+        <Box className="other-work-section" component="section">
+          <Title className="section-title other-work-title" order={2}>
+            Other work
+          </Title>
           <OtherProjects currentSlug={project.slug} />
-        </section>
-      </main>
+        </Box>
+      </Box>
       <PlayerDock player={player} />
-    </div>
+    </Box>
   );
 }
 
 function ProjectMissing() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="text-center">
-        <h1 className="chrometxt text-7xl font-bold">404</h1>
-        <p className="mt-4 text-muted-foreground">Project not found.</p>
-        <Link
-          to={ROUTES.home}
-          className="chromebtn mt-6 inline-flex items-center gap-2 rounded-lg px-4 py-2 font-mono text-xs"
-        >
-          <ArrowLeft className="size-3.5" aria-hidden="true" />
+    <Stack align="center" className="not-found-page" gap="1rem" justify="center">
+      <Box className="not-found-content">
+        <Title className="not-found-title chrometxt" order={1}>
+          404
+        </Title>
+        <Text className="muted-copy" component="p">
+          Project not found.
+        </Text>
+        <Button className="chrome-link-button" component={Link} mt="1.5rem" to={ROUTES.home} variant="unstyled">
+          <ArrowLeft aria-hidden="true" size={14} />
           Back home
-        </Link>
-      </div>
-    </div>
+        </Button>
+      </Box>
+    </Stack>
   );
 }

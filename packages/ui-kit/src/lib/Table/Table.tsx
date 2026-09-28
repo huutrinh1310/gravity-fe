@@ -1,13 +1,13 @@
-import React, { useMemo } from 'react'
+import React, { useMemo } from 'react';
 
-import { Box } from '@mantine/core'
+import { Box } from '@mantine/core';
 
-import { type TablePropertiesInterface } from './Table.types'
+import { type TablePropertiesInterface } from './Table.types';
 
-import classes from './Table.module.css'
+import classes from './Table.module.css';
 
 export const Table = ({ columns = {}, data = [], error = false }: TablePropertiesInterface) => {
-  const columnKeys = useMemo(() => Object.keys(columns), [columns])
+  const columnKeys = useMemo(() => Object.keys(columns), [columns]);
 
   return (
     <Box className={classes.root} role="table">
@@ -38,5 +38,5 @@ export const Table = ({ columns = {}, data = [], error = false }: TablePropertie
         ))}
       </Box>
     </Box>
-  )
-}
+  );
+};

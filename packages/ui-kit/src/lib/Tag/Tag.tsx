@@ -1,22 +1,21 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import { Pill, type PillProps } from '@mantine/core'
+import { Pill, type PillProps } from '@mantine/core';
 
-import classes from './Tag.module.css'
+import classes from './Tag.module.css';
 
-export interface ITagProps extends PillProps {
-  content: string
-  size?: 'sm' | 'md' | 'lg'
-  variant?: 'default' | 'primary' | 'error'
-  removable?: boolean
-  className?: string
-  filled?: boolean
-  onRemove?: () => void
+export interface TagProperties extends PillProps {
+  content: string;
+  filled?: boolean;
+  onRemove?: () => void;
+  removable?: boolean;
+  size?: 'lg' | 'md' | 'sm';
+  variant?: 'default' | 'error' | 'primary';
 }
 
-export function Tag({ content, className, removable = false, variant = 'default', size = 'md', filled = false, ...rest }: ITagProps) {
-  const styleRoot = `tag-${variant}`
-  const styleFilled = `tag-${filled ? 'filled' : 'empty'}`
+export function Tag({ content, filled = false, removable = false, size = 'md', variant = 'default', ...rest }: Readonly<TagProperties>) {
+  const styleRoot = `tag-${variant}`;
+  const styleFilled = `tag-${filled ? 'filled' : 'empty'}`;
 
   return (
     <Pill
@@ -27,5 +26,5 @@ export function Tag({ content, className, removable = false, variant = 'default'
     >
       {content}
     </Pill>
-  )
+  );
 }

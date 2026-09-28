@@ -1,10 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "ignoreDeprecations": "6.0",
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"],
+      "@nx-vite-react-ts-mantine-boilerplate/ui-kit": ["../../packages/ui-kit/src"]
     },
     "target": "ESNext",
     "useDefineForClassFields": true,
@@ -16,7 +15,6 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -25,7 +23,7 @@
   "files": ["../../node_modules/@nx/react/typings/image.d.ts"],
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "./tsconfig.app.json",
     },
     {
       "path": "./tsconfig.spec.json"

@@ -1,11 +1,11 @@
-export { Button } from './lib/Button'
-export { ErrorBlock } from './lib/ErrorBlock'
-export { Input } from './lib/Input'
-export { Loader } from './lib/Loader'
-export { Pagination } from './lib/Pagination'
-export { Select } from './lib/Select'
-export { Space } from './lib/Space'
-export { Table } from './lib/Table'
-export { ThemeProvider } from './providers'
-export { Tag } from './lib/Tag'
-export type { ComboboxItem, SelectProps, TextInputProps } from '@mantine/core'
+export { Button } from './lib/Button';
+export { ErrorBlock } from './lib/ErrorBlock';
+export { Input } from './lib/Input';
+export { Loader } from './lib/Loader';
+export { Pagination } from './lib/Pagination';
+export { Select } from './lib/Select';
+export { Space } from './lib/Space';
+export { Table } from './lib/Table';
+export { Tag } from './lib/Tag';
+export { ThemeProvider } from './providers';
+export type { ComboboxItem, SelectProps, TextInputProps } from '@mantine/core';

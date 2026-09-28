@@ -1,13 +1,13 @@
-import { type Meta, type StoryObj } from '@storybook/react-vite'
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 
-import { Table as TableComponent } from './Table'
+import { Table as TableComponent } from './Table';
 
 const columns = {
   name: 'Repository',
   date: 'Created',
   license: 'License',
   stars: 'Stars',
-}
+};
 
 const data = [
   {
@@ -24,7 +24,7 @@ const data = [
     license: 'Apache-2.0',
     stars: 6100,
   },
-]
+];
 
 export default {
   title: 'Data Display/Table',
@@ -34,12 +34,12 @@ export default {
     error: false,
   },
   component: TableComponent,
-} as Meta<typeof TableComponent>
+} as Meta<typeof TableComponent>;
 
-export const Default: StoryObj<typeof TableComponent> = {}
+export const Default: StoryObj<typeof TableComponent> = {};
 
 export const EmptyState: StoryObj<typeof TableComponent> = {
   args: {
     data: [],
   },
-}
+};

@@ -1,1 +1,1 @@
-export { Space } from '@mantine/core'
+export { Space } from '@mantine/core';

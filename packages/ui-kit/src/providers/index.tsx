@@ -1,1 +1,1 @@
-export { MantineProvider as ThemeProvider } from '@mantine/core'
+export { MantineProvider as ThemeProvider } from '@mantine/core';

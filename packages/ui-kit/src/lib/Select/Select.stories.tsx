@@ -1,12 +1,12 @@
-import { type Meta, type StoryObj } from '@storybook/react-vite'
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 
-import { Select as SelectComponent } from './Select'
+import { Select as SelectComponent } from './Select';
 
 const licenseOptions = [
   { label: '--- Not Selected ---', value: ' ' },
   { label: 'MIT License', value: 'mit' },
   { label: 'Apache-2.0', value: 'apache-2.0' },
-]
+];
 
 export default {
   title: 'Forms/Select',
@@ -17,6 +17,6 @@ export default {
     searchable: true,
   },
   component: SelectComponent,
-} as Meta<typeof SelectComponent>
+} as Meta<typeof SelectComponent>;
 
-export const Default: StoryObj<typeof SelectComponent> = {}
+export const Default: StoryObj<typeof SelectComponent> = {};

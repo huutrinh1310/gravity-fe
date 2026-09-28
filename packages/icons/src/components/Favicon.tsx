@@ -1,4 +1,4 @@
-import type { SVGProps } from 'react'
+import type { SVGProps } from 'react';
 
 const SvgFavicon = (properties: SVGProps<SVGSVGElement>) => (
   <svg fill="none" height="1em" viewBox="0 0 410 404" width="1em" xmlns="http://www.w3.org/2000/svg" {...properties}>
@@ -22,6 +22,6 @@ const SvgFavicon = (properties: SVGProps<SVGSVGElement>) => (
       </linearGradient>
     </defs>
   </svg>
-)
+);
 
-export default SvgFavicon
+export default SvgFavicon;

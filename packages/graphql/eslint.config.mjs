@@ -1,4 +1,4 @@
-import baseConfig from '../../eslint.config.mjs'
+import baseConfig from '../../eslint.config.mjs';
 
 const config = [
   ...baseConfig,
@@ -15,6 +15,6 @@ const config = [
   {
     ignores: ['**/dist', '**/graphql/*.generated.ts', '**/generated/*.ts', '**/*/schema.graphql'],
   },
-]
+];
 
-export default config
+export default config;

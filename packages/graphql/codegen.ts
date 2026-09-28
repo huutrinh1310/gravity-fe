@@ -1,9 +1,9 @@
-import 'dotenv/config'
-import type { CodegenConfig } from '@graphql-codegen/cli'
+import 'dotenv/config';
+import type { CodegenConfig } from '@graphql-codegen/cli';
 
-const endpoint = process.env.GITHUB_API_ENDPOINT || 'https://api.github.com/graphql'
-const token = process.env.GITHUB_TOKEN
-const localSchemaPath = 'src/lib/generated/schema.graphql'
+const endpoint = process.env.GITHUB_API_ENDPOINT || 'https://api.github.com/graphql';
+const token = process.env.GITHUB_TOKEN;
+const localSchemaPath = 'src/lib/generated/schema.graphql';
 
 const schema: CodegenConfig['schema'] = token
   ? [
@@ -16,7 +16,7 @@ const schema: CodegenConfig['schema'] = token
         },
       },
     ]
-  : localSchemaPath
+  : localSchemaPath;
 
 const config: CodegenConfig = {
   documents: 'src/lib/graphql/**/*.graphql',
@@ -51,6 +51,6 @@ const config: CodegenConfig = {
   ignoreNoDocuments: true,
   overwrite: true,
   schema,
-}
+};
 
-export default config
+export default config;

@@ -1,1 +1,1 @@
-export { Button } from '@mantine/core'
+export { Button } from '@mantine/core';

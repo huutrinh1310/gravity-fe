@@ -1,12 +1,12 @@
-import { useQuery as useReactQuery, type UseQueryOptions } from "@tanstack/react-query";
+import { type UseQueryOptions, useQuery as useReactQuery } from '@tanstack/react-query';
 
 export const useQuery = <TData, TError>(
-  queryKey: string | readonly unknown[],
-  queryFn: () => Promise<TData>,
+  queryKey: readonly unknown[] | string,
+  queryFunction: () => Promise<TData>,
   options?: UseQueryOptions<TData, TError>,
 ) =>
   useReactQuery({
-    queryKey: typeof queryKey === "string" ? [queryKey] : queryKey,
-    queryFn,
+    queryFn: queryFunction,
+    queryKey: typeof queryKey === 'string' ? [queryKey] : queryKey,
     ...options,
   });

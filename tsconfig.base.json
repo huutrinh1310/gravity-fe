@@ -19,11 +19,10 @@
     "strict": true,
     "verbatimModuleSyntax": true,
     "exactOptionalPropertyTypes": true,
-    "baseUrl": "./packages",
     "paths": {
-      "@nx-vite-react-ts-mantine-boilerplate/graphql": ["graphql/src"],
-      "@nx-vite-react-ts-mantine-boilerplate/icons": ["icons/src"],
-      "@nx-vite-react-ts-mantine-boilerplate/ui-kit": ["ui-kit/src"]
+      "@nx-vite-react-ts-mantine-boilerplate/graphql": ["./packages/graphql/src"],
+      "@nx-vite-react-ts-mantine-boilerplate/icons": ["./packages/icons/src"],
+      "@nx-vite-react-ts-mantine-boilerplate/ui-kit": ["./packages/ui-kit/src"]
     }
   },
   "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "global.d.ts"],

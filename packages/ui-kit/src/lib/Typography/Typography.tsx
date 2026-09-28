@@ -1,16 +1,18 @@
-import React from 'react'
+import React from 'react';
 
-import type { TypographyPropertiesInterface } from './Typography.types'
+import type { TypographyPropertiesInterface } from './Typography.types';
 
-export default function Typography({ variant }: TypographyPropertiesInterface) {
+export function Typography({ variant }: Readonly<TypographyPropertiesInterface>) {
   switch (variant) {
     case 'body1':
     case 'body2':
-    case 'overline':
-      return <p className={`typography typography--${variant}`} />
-    default:
-      const Component: React.ElementType = variant || 'p'
+    case 'overline': {
+      return <p className={`typography typography--${variant}`} />;
+    }
+    default: {
+      const Component: React.ElementType = variant || 'p';
 
-      return <Component className={`typography ${variant}`} />
+      return <Component className={`typography ${variant}`} />;
+    }
   }
 }

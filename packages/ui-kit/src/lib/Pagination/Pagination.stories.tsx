@@ -1,6 +1,6 @@
-import { type Meta, type StoryObj } from '@storybook/react-vite'
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 
-import { Pagination as PaginationComponent } from './Pagination'
+import { Pagination as PaginationComponent } from './Pagination';
 
 export default {
   title: 'Navigation/Pagination',
@@ -11,12 +11,12 @@ export default {
     onPrevClick: () => console.info('onPrevClick'),
   },
   component: PaginationComponent,
-} as Meta<typeof PaginationComponent>
+} as Meta<typeof PaginationComponent>;
 
-export const Default: StoryObj<typeof PaginationComponent> = {}
+export const Default: StoryObj<typeof PaginationComponent> = {};
 
 export const BothEnabled: StoryObj<typeof PaginationComponent> = {
   args: {
     isPrevDisabled: false,
   },
-}
+};

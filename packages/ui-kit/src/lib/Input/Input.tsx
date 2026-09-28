@@ -1,1 +1,1 @@
-export { TextInput as Input } from '@mantine/core'
+export { TextInput as Input } from '@mantine/core';

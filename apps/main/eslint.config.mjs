@@ -1,4 +1,4 @@
-import baseConfig from '../../eslint.config.mjs'
+import baseConfig from '../../eslint.config.mjs';
 
 const config = [
   {
@@ -15,6 +15,6 @@ const config = [
     // Override or add rules here
     rules: {},
   },
-]
+];
 
-export default config
+export default config;

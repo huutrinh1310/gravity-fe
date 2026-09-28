@@ -1,135 +1,149 @@
-import { useState } from "react";
-import type { PlayerState } from "../hooks/useMusicPlayer";
+import { useState } from 'react';
+
+import { ActionIcon, Box, Button, Group, Paper, Progress, Text, TextInput } from '@mantine/core';
+
+import type { PlayerState } from '../hooks/useMusicPlayer';
 
 const fmt = (seconds: number) =>
-  !Number.isFinite(seconds)
-    ? "00:00"
-    : `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
+  Number.isFinite(seconds) ? `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(Math.floor(seconds % 60)).padStart(2, '0')}` : '00:00';
 
-function Equalizer({ playing }: { playing: boolean }) {
-  const bars = ["1s", "1.15s", "0.9s", "1.25s", "1s"];
-  return (
-    <div className="flex h-6 items-end gap-[3px]" aria-hidden="true">
-      {bars.map((duration, index) => (
-        <span
-          key={index}
-          className="w-1 origin-bottom rounded bg-primary animate-eq"
-          style={{
-            animation: `eq ${duration} ease-in-out infinite`,
-            animationDelay: `${index * 0.07}s`,
-            animationPlayState: playing ? "running" : "paused",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
 export function NowPlayingCard({ player }: { player: PlayerState }) {
   const pct = player.duration > 0 ? (player.time / player.duration) * 100 : 0;
+
   return (
-    <div className="chrome rounded-xl p-4">
-      <div className="flex items-center justify-between font-mono text-[10px] text-muted-foreground">
-        <span>NOW PLAYING</span>
-        <span>
+    <Paper className="now-playing-card chrome" radius="md">
+      <Group className="now-playing-meta" justify="space-between" wrap="nowrap">
+        <Text component="span">NOW PLAYING</Text>
+        <Text component="span">
           {fmt(player.time)} / {fmt(player.duration)}
-        </span>
-      </div>
-      <div className="mt-3 flex items-center gap-3">
+        </Text>
+      </Group>
+      <Group className="now-playing-track" gap="0.75rem" wrap="nowrap">
         <Equalizer playing={player.playing} />
-        <div className="min-w-0">
-          <p className="truncate text-sm font-medium">{player.title}</p>
-          <p className="truncate font-mono text-[10px] text-muted-foreground">
-            {player.playing ? "playing — background" : "paused"}
-          </p>
-        </div>
-      </div>
-      <div className="mt-3 h-1 overflow-hidden rounded-full bg-foreground/10">
-        <div
-          className="progress-chrome h-full rounded-full transition-[width]"
-          style={{ width: `${pct}%` }}
-        />
-      </div>
-    </div>
+        <Box className="now-playing-copy">
+          <Text className="now-playing-title" component="p">
+            {player.title}
+          </Text>
+          <Text className="now-playing-status" component="p">
+            {player.playing ? 'playing — background' : 'paused'}
+          </Text>
+        </Box>
+      </Group>
+      <Progress aria-label="Track progress" className="music-progress now-playing-progress" size={4} value={pct} />
+    </Paper>
   );
 }
 export function PlayerDock({ player }: { player: PlayerState }) {
-  const [mode, setMode] = useState<"idle" | "url">("idle");
-  const [url, setUrl] = useState("");
+  const [mode, setMode] = useState<'idle' | 'url'>('idle');
+  const [url, setUrl] = useState('');
+  const [showPlaying, setShowPlaying] = useState(false);
   const pct = player.duration > 0 ? (player.time / player.duration) * 100 : 0;
+
   const submitUrl = () => {
     player.loadUrl(url);
-    setUrl("");
-    setMode("idle");
+    setUrl('');
+    setMode('idle');
   };
+  const handlePlayingMusic = () => setShowPlaying((previousState) => !previousState);
+
+  if (!showPlaying) {
+    return (
+      <Box className="player-dock player-dock-collapsed">
+        <Button className="player-chip pill" variant="unstyled" onClick={handlePlayingMusic}>
+          ▶
+        </Button>
+      </Box>
+    );
+  }
+
   return (
-    <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2">
-      <div className="chrome relative overflow-hidden rounded-2xl p-3">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="animate-sheen absolute inset-y-0 w-1/3 bg-white/40" />
-        </div>
-        <div className="relative flex items-center gap-3">
-          <button
+    <Box className="player-dock player-dock-expanded">
+      <Paper className="player-dock-panel chrome" radius="lg">
+        <Box aria-hidden="true" className="player-sheen">
+          <Box className="player-sheen-light" />
+        </Box>
+        <Group className="player-dock-main" gap="0.75rem" wrap="nowrap">
+          <ActionIcon
+            aria-label={player.playing ? 'Pause music' : 'Play music'}
+            className="player-play chromebtn"
+            size={40}
+            variant="unstyled"
             onClick={player.toggle}
-            className="chromebtn grid size-10 shrink-0 cursor-pointer place-items-center rounded-full transition-transform hover:-translate-y-0.5"
-            aria-label={player.playing ? "Pause music" : "Play music"}
           >
-            {player.playing ? "❚❚" : "▶"}
-          </button>
-          <div className="min-w-0 flex-1">
-            <div className="flex items-center justify-between gap-2">
-              <p className="truncate text-sm font-medium">{player.title}</p>
-              <p className="shrink-0 font-mono text-[10px] text-muted-foreground">
+            {player.playing ? '❚❚' : '▶'}
+          </ActionIcon>
+          <Box className="player-track">
+            <Group className="player-track-heading" gap="0.5rem" justify="space-between" wrap="nowrap">
+              <Text className="player-track-title" component="p">
+                {player.title}
+              </Text>
+              <Text className="player-track-time" component="p">
                 {fmt(player.time)}
-              </p>
-            </div>
-            <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-foreground/10">
-              <div
-                className="progress-chrome h-full rounded-full transition-[width]"
-                style={{ width: `${pct}%` }}
-              />
-            </div>
-          </div>
-          <div className="flex shrink-0 items-center gap-2">
-            <label className="pill cursor-pointer rounded-full px-3 py-1.5 font-mono text-[11px] transition-transform hover:-translate-y-0.5">
+              </Text>
+            </Group>
+            <Progress aria-label="Track progress" className="music-progress dock-progress" size={4} value={pct} />
+          </Box>
+          <Group className="player-actions" gap="0.5rem" wrap="nowrap">
+            <Button className="player-chip pill player-upload" component="label" variant="unstyled">
               upload
               <input
-                type="file"
                 accept="audio/*"
-                className="hidden"
+                className="player-file-input"
+                type="file"
                 onChange={(event) => {
                   const file = event.target.files?.[0];
-                  if (file) player.loadFile(file);
-                  event.target.value = "";
+
+                  if (file) {
+                    player.loadFile(file);
+                  }
+                  event.target.value = '';
                 }}
               />
-            </label>
-            <button
-              onClick={() => setMode(mode === "url" ? "idle" : "url")}
-              className="pill cursor-pointer rounded-full px-3 py-1.5 font-mono text-[11px] transition-transform hover:-translate-y-0.5"
-            >
+            </Button>
+            <Button className="player-chip pill" variant="unstyled" onClick={() => setMode(mode === 'url' ? 'idle' : 'url')}>
               paste url
-            </button>
-          </div>
-        </div>
-        {mode === "url" && (
-          <div className="relative mt-2 flex gap-2">
-            <input
+            </Button>
+            <Button className="player-chip pill" variant="unstyled" onClick={handlePlayingMusic}>
+              X
+            </Button>
+          </Group>
+        </Group>
+        {mode === 'url' && (
+          <Group className="player-url-row" gap="0.5rem" wrap="nowrap">
+            <TextInput
+              className="player-url-input"
+              classNames={{ input: 'player-url-field' }}
+              placeholder="https://example.com/track.mp3"
               type="url"
               value={url}
               onChange={(event) => setUrl(event.target.value)}
-              onKeyDown={(event) => event.key === "Enter" && submitUrl()}
-              placeholder="https://example.com/track.mp3"
-              className="min-w-0 flex-1 rounded-lg border border-input bg-background/70 px-3 py-1.5 font-mono text-xs outline-none focus:border-ring"
+              onKeyDown={(event) => event.key === 'Enter' && submitUrl()}
             />
-            <button
-              onClick={submitUrl}
-              className="chromebtn cursor-pointer rounded-lg px-3 py-1.5 font-mono text-[11px]"
-            >
+            <Button className="player-load-button chromebtn" variant="unstyled" onClick={submitUrl}>
               load
-            </button>
-          </div>
+            </Button>
+          </Group>
         )}
-      </div>
-    </div>
+      </Paper>
+    </Box>
+  );
+}
+function Equalizer({ playing }: { playing: boolean }) {
+  const bars = ['1s', '1.15s', '0.9s', '1.25s', '1s'];
+
+  return (
+    <Box aria-hidden="true" className="equalizer">
+      {bars.map((duration, index) => (
+        <span
+          key={index}
+          style={{
+            animation: `eq ${duration} ease-in-out infinite`,
+            animationDelay: `${index * 0.07}s`,
+            animationPlayState: playing ? 'running' : 'paused',
+          }}
+          className="equalizer-bar"
+        />
+      ))}
+    </Box>
   );
 }

@@ -1,11 +1,11 @@
-import { type Meta, type StoryObj } from '@storybook/react-vite'
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 
-import { Input as InputComponent } from './Input'
+import { Input as InputComponent } from './Input';
 
 export default {
   title: 'Forms/Input',
   component: InputComponent,
-} as Meta<typeof InputComponent>
+} as Meta<typeof InputComponent>;
 
 export const Default: StoryObj<typeof InputComponent> = {
   args: {
@@ -13,4 +13,4 @@ export const Default: StoryObj<typeof InputComponent> = {
     description: 'Filters repositories by name fragment.',
     placeholder: 'Search repositories',
   },
-}
+};

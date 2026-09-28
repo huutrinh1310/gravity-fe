@@ -3,6 +3,6 @@ const config = {
     'postcss-preset-mantine': {},
     'postcss-simple-vars': {},
   },
-}
+};
 
-export default config
+export default config;

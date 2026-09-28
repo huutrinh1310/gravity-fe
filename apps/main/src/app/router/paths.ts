@@ -1,12 +1,12 @@
 export const ROUTES = {
-  home: "/",
-  projectDetailPattern: "/projects/:slug",
+  home: '/',
   projectDetail: (slug: string) => `/projects/${encodeURIComponent(slug)}`,
+  projectDetailPattern: '/projects/:slug',
   sections: {
-    top: "#top",
-    work: "#work",
-    stack: "#stack",
-    log: "#log",
-    contact: "#contact",
+    contact: '#contact',
+    log: '#log',
+    stack: '#stack',
+    top: '#top',
+    work: '#work',
   },
 } as const;

@@ -8,7 +8,7 @@ export interface SitebarItemProperties {
   label: string;
 }
 
-export function SitebarItem({ label, href, icon }: SitebarItemProperties) {
+export function SitebarItem({ label, href, icon }: Readonly<SitebarItemProperties>) {
   const { pathname } = useLocation();
   const isActive = href === pathname;
 

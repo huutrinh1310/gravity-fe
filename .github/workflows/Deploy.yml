@@ -1,7 +1,7 @@
 name: Deploy
 on:
   workflow_run:
-    workflows: ["Code check"]
+    workflows: ['Code check']
     branches: [main]
     types:
       - completed

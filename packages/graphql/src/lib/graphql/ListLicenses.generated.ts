@@ -1,10 +1,10 @@
-import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
+import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 
-import type * as Types from '../generated/graphql'
+import type * as Types from '../generated/graphql';
 
-export type ListLicensesQuery = { licenses: Array<null | { id: string; name: string; __typename: 'License'; key: string }> }
+export type ListLicensesQuery = { licenses: Array<null | { id: string; name: string; __typename: 'License'; key: string }> };
 
-export type ListLicensesQueryVariables = Types.Exact<{ [key: string]: never }>
+export type ListLicensesQueryVariables = Types.Exact<{ [key: string]: never }>;
 
 export const ListLicensesDocument = {
   definitions: [
@@ -32,4 +32,4 @@ export const ListLicensesDocument = {
     },
   ],
   kind: 'Document',
-} as unknown as DocumentNode<ListLicensesQuery, ListLicensesQueryVariables>
+} as unknown as DocumentNode<ListLicensesQuery, ListLicensesQueryVariables>;

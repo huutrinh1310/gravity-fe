@@ -4,7 +4,9 @@ import type { ProfileType } from '../types/ProfileType';
 
 import { api, getApiUrl } from '../constants/api';
 
-export const useProfileQuery = (queryKey?: string, options?: UseQueryOptions<ProfileType, TError>) => {
+type ProfileQueryOptionsProperties = UseQueryOptions<ProfileType, TError>;
+
+export const useProfileQuery = (queryKey?: string, options?: ProfileQueryOptionsProperties) => {
   const key = `profile-${queryKey ? queryKey : 'default'}`;
   const url = getApiUrl(api.profile.get);
 

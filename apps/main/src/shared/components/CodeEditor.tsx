@@ -40,7 +40,7 @@ export default function CodeEditor({
   height = '90vh',
   languages = DEFAULT_LANGUAGES,
   onLanguageChange,
-}: CodeEditorProperties) {
+}: Readonly<CodeEditorProperties>) {
   const availableLanguages = languages.length > 0 ? languages : DEFAULT_LANGUAGES;
   const initialLanguage = availableLanguages.some(({ id }) => id === defaultLanguage) ? defaultLanguage : availableLanguages[0].id;
   const [language, setLanguage] = useState(initialLanguage);

@@ -4,10 +4,30 @@ import { ActionIcon, Box, Button, Group, Paper, Progress, Text, TextInput } from
 
 import type { PlayerState } from '../hooks/useMusicPlayer';
 
+function Equalizer({ playing }: Readonly<{ playing: boolean }>) {
+  const bars = ['1s', '1.15s', '0.9s', '1.25s', '1s'];
+
+  return (
+    <Box aria-hidden="true" className="equalizer">
+      {bars.map((duration, index) => (
+        <span
+          key={index}
+          style={{
+            animation: `eq ${duration} ease-in-out infinite`,
+            animationDelay: `${index * 0.07}s`,
+            animationPlayState: playing ? 'running' : 'paused',
+          }}
+          className="equalizer-bar"
+        />
+      ))}
+    </Box>
+  );
+}
+
 const fmt = (seconds: number) =>
   Number.isFinite(seconds) ? `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(Math.floor(seconds % 60)).padStart(2, '0')}` : '00:00';
 
-export function NowPlayingCard({ player }: { player: PlayerState }) {
+export function NowPlayingCard({ player }: Readonly<{ player: PlayerState }>) {
   const pct = player.duration > 0 ? (player.time / player.duration) * 100 : 0;
 
   return (
@@ -33,7 +53,7 @@ export function NowPlayingCard({ player }: { player: PlayerState }) {
     </Paper>
   );
 }
-export function PlayerDock({ player }: { player: PlayerState }) {
+export function PlayerDock({ player }: Readonly<{ player: PlayerState }>) {
   const [mode, setMode] = useState<'idle' | 'url'>('idle');
   const [url, setUrl] = useState('');
   const [showPlaying, setShowPlaying] = useState(false);
@@ -125,25 +145,6 @@ export function PlayerDock({ player }: { player: PlayerState }) {
           </Group>
         )}
       </Paper>
-    </Box>
-  );
-}
-function Equalizer({ playing }: { playing: boolean }) {
-  const bars = ['1s', '1.15s', '0.9s', '1.25s', '1s'];
-
-  return (
-    <Box aria-hidden="true" className="equalizer">
-      {bars.map((duration, index) => (
-        <span
-          key={index}
-          style={{
-            animation: `eq ${duration} ease-in-out infinite`,
-            animationDelay: `${index * 0.07}s`,
-            animationPlayState: playing ? 'running' : 'paused',
-          }}
-          className="equalizer-bar"
-        />
-      ))}
     </Box>
   );
 }

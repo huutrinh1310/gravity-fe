@@ -8,11 +8,7 @@ import Sitebar from './Sitebar';
 import { SiteFooter } from './SiteFooter';
 import { SiteHeader } from './SiteHeader';
 
-export interface DashboardLayoutProperties {
-  children?: React.ReactNode;
-}
-
-export function DashboardLayout({}: DashboardLayoutProperties) {
+export function DashboardLayout() {
   return (
     <Box className="dashboard-layout">
       <SiteHeader />

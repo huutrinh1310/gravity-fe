@@ -12,7 +12,7 @@ const initialValue: AuthProperties = {
   role: 'Guest',
 };
 
-const AuthContext = createContext(initialValue);
+export const AuthContext = createContext(initialValue);
 
 type AuthProviderProperties = {
   children: React.ReactNode;

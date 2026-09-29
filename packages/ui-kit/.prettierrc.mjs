@@ -1,8 +1,8 @@
 export default {
   printWidth: 150,
-  tabWidth: 2,
   semi: true,
   singleQuote: true,
+  tabWidth: 2,
   trailingComma: 'all',
   useTabs: false,
 };

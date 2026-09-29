@@ -1,8 +1,9 @@
-import { NowPlayingCard, PlayerDock } from '@/shared/components/MusicPlayer';
-import { ProjectCard } from '@/shared/components/ProjectCard';
-import { PROJECTS } from '@/shared/data/projects';
-import { useMusicPlayer } from '@/shared/hooks/useMusicPlayer';
 import { Box, Group, SimpleGrid, Stack, Text, Title } from '@mantine/core';
+
+import { NowPlayingCard, PlayerDock } from '../../shared/components/MusicPlayer';
+import { ProjectCard } from '../../shared/components/ProjectCard';
+import { PROJECTS } from '../../shared/data/projects';
+import { useMusicPlayer } from '../../shared/hooks/useMusicPlayer';
 
 const STACK = ['TypeScript', 'Go', 'Rust', 'React', 'Node', 'Postgres', 'K8s', 'GraphQL'];
 const LOG = [

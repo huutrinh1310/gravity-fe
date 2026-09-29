@@ -145,4 +145,3 @@ jobs:
       - name: test Main
         if: github.ref == 'refs/heads/main'
         run: npx nx affected --target=test --base=origin/main~1 --head=origin/main
-

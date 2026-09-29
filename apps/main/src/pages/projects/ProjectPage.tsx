@@ -10,6 +10,23 @@ import { OtherProjects } from '../../shared/components/ProjectCard';
 import { getProject } from '../../shared/data/projects';
 import { useMusicPlayer } from '../../shared/hooks/useMusicPlayer';
 
+const ProjectMissing = () => (
+  <Stack align="center" className="not-found-page" gap="1rem" justify="center">
+    <Box className="not-found-content">
+      <Title className="not-found-title chrometxt" order={1}>
+        404
+      </Title>
+      <Text className="muted-copy" component="p">
+        Project not found.
+      </Text>
+      <Button className="chrome-link-button" component={Link} mt="1.5rem" to={ROUTES.home} variant="unstyled">
+        <ArrowLeft aria-hidden="true" size={14} />
+        Back home
+      </Button>
+    </Box>
+  </Stack>
+);
+
 export function ProjectPage() {
   const { slug = '' } = useParams();
   const project = getProject(slug);
@@ -99,24 +116,5 @@ export function ProjectPage() {
       </Box>
       <PlayerDock player={player} />
     </Box>
-  );
-}
-
-function ProjectMissing() {
-  return (
-    <Stack align="center" className="not-found-page" gap="1rem" justify="center">
-      <Box className="not-found-content">
-        <Title className="not-found-title chrometxt" order={1}>
-          404
-        </Title>
-        <Text className="muted-copy" component="p">
-          Project not found.
-        </Text>
-        <Button className="chrome-link-button" component={Link} mt="1.5rem" to={ROUTES.home} variant="unstyled">
-          <ArrowLeft aria-hidden="true" size={14} />
-          Back home
-        </Button>
-      </Box>
-    </Stack>
   );
 }

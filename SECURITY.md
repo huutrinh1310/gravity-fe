@@ -5,6 +5,7 @@ We prioritize the security of our project and value the contributions of the com
 ## Reporting a Vulnerability
 
 To report a security vulnerability, please follow these steps:
+
 1. Create a new issue in this repository to report the vulnerability. Use a clear and descriptive title to help us understand the issue.
 2. Provide detailed steps to reproduce the vulnerability, along with any additional context you can provide.
 3. Avoid sharing sensitive information or data when reporting the vulnerability.

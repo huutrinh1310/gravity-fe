@@ -1,5 +1,6 @@
-import { useAuth } from '@/app/providers/AuthProvider';
 import { Box, Group, Text } from '@mantine/core';
+
+import { useAuth } from '../../../app/providers/AuthProvider';
 
 export function SiteFooter() {
   const { name, email } = useAuth();

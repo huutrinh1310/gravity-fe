@@ -1,14 +1,14 @@
 import { Link } from 'react-router';
 
-import { useAuth } from '@/app/providers/AuthProvider';
-import { ROUTES } from '@/app/router/paths';
 import { Box, Group, Text } from '@mantine/core';
 import { Tag } from '@nx-vite-react-ts-mantine-boilerplate/ui-kit';
 import { ArrowLeft } from 'lucide-react';
 
+import { useAuth } from '../../../app/providers/AuthProvider';
+import { ROUTES } from '../../../app/router/paths';
 import { ThemeToggle } from '../ThemeToggle';
 
-export function SiteHeader({ detail = false }: { detail?: boolean }) {
+export function SiteHeader({ detail = false }: Readonly<{ detail?: boolean }>) {
   const { name } = useAuth();
 
   return (

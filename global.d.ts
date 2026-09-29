@@ -6,10 +6,10 @@
 
 declare global {
   interface ImportMeta {
-    readonly env: ImportMetaEnvironment
+    readonly env: ImportMetaEnvironment;
   }
   interface ImportMetaEnvironment {
-    readonly VITE_GITHUB_API_ENDPOINT: string
-    readonly VITE_GITHUB_TOKEN: string
+    readonly VITE_GITHUB_API_ENDPOINT: string;
+    readonly VITE_GITHUB_TOKEN: string;
   }
 }

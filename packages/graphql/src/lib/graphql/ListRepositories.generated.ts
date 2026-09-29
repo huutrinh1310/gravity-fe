@@ -1,13 +1,13 @@
-import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
+import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 
-import type * as Types from '../generated/graphql'
+import type * as Types from '../generated/graphql';
 
 export type ListRepositoriesQuery = {
   search: {
-    __typename: 'SearchResultItemConnection'
+    __typename: 'SearchResultItemConnection';
     edges: Array<null | {
-      __typename: 'SearchResultItemEdge'
-      cursor: string
+      __typename: 'SearchResultItemEdge';
+      cursor: string;
       node:
         | null
         | { __typename: 'App' }
@@ -18,27 +18,27 @@ export type ListRepositoriesQuery = {
         | { __typename: 'PullRequest' }
         | { __typename: 'User' }
         | {
-            id: string
-            name: string
-            __typename: 'Repository'
-            licenseInfo: null | { id: string; name: string; __typename: 'License' }
-            stargazers: { __typename: 'StargazerConnection'; totalCount: number }
-            createdAt: unknown
-            updatedAt: unknown
-          }
-    }> | null
-    pageInfo: { __typename: 'PageInfo'; endCursor: null | string; hasNextPage: boolean; hasPreviousPage: boolean; startCursor: null | string }
-    repositoryCount: number
-  }
-}
+            id: string;
+            name: string;
+            __typename: 'Repository';
+            licenseInfo: null | { id: string; name: string; __typename: 'License' };
+            stargazers: { __typename: 'StargazerConnection'; totalCount: number };
+            createdAt: unknown;
+            updatedAt: unknown;
+          };
+    }> | null;
+    pageInfo: { __typename: 'PageInfo'; endCursor: null | string; hasNextPage: boolean; hasPreviousPage: boolean; startCursor: null | string };
+    repositoryCount: number;
+  };
+};
 
 export type ListRepositoriesQueryVariables = Types.Exact<{
-  cursorAfter?: Types.InputMaybe<Types.Scalars['String']['input']>
-  cursorBefore?: Types.InputMaybe<Types.Scalars['String']['input']>
-  first?: Types.InputMaybe<Types.Scalars['Int']['input']>
-  last?: Types.InputMaybe<Types.Scalars['Int']['input']>
-  queryString: Types.Scalars['String']['input']
-}>
+  cursorAfter?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  cursorBefore?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  first?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  last?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  queryString: Types.Scalars['String']['input'];
+}>;
 
 export const ListRepositoriesDocument = {
   definitions: [
@@ -167,4 +167,4 @@ export const ListRepositoriesDocument = {
     },
   ],
   kind: 'Document',
-} as unknown as DocumentNode<ListRepositoriesQuery, ListRepositoriesQueryVariables>
+} as unknown as DocumentNode<ListRepositoriesQuery, ListRepositoriesQueryVariables>;

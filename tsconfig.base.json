@@ -20,6 +20,7 @@
     "verbatimModuleSyntax": true,
     "exactOptionalPropertyTypes": true,
     "paths": {
+      "@/*": ["./apps/main/src/*"],
       "@nx-vite-react-ts-mantine-boilerplate/graphql": ["./packages/graphql/src"],
       "@nx-vite-react-ts-mantine-boilerplate/icons": ["./packages/icons/src"],
       "@nx-vite-react-ts-mantine-boilerplate/ui-kit": ["./packages/ui-kit/src"]

@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react';
 import path from 'node:path';
 import analyze from 'rollup-plugin-analyzer';
-import visualizer from 'rollup-plugin-visualizer';
+import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 
 const isDevelopment = Boolean(process.env.DEV ?? process.env.NODE_ENV === 'development');

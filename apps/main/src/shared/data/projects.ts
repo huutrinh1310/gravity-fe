@@ -1,7 +1,3 @@
-import meshgridImg from '@/assets/project-meshgrid.jpg';
-import payoutsImg from '@/assets/project-payouts.jpg';
-import ridelineImg from '@/assets/project-rideline.jpg';
-
 export type Project = {
   title: string;
   alt: string;
@@ -29,7 +25,7 @@ export const PROJECTS: Project[] = [
       'Alert rules engine with dry-run previews against historical event replays',
       'Zero-downtime rollouts driven by a custom Kubernetes operator',
     ],
-    img: meshgridImg,
+    img: '',
     metrics: [
       { label: 'events / min', value: '40k' },
       { label: 'p95 latency', value: '120ms' },
@@ -54,7 +50,7 @@ export const PROJECTS: Project[] = [
       'GraphQL API with per-field authorization for finance and support roles',
       'Automated daily reconciliation against three payment providers',
     ],
-    img: payoutsImg,
+    img: '',
     metrics: [
       { label: 'settled / day', value: '$2M' },
       { label: 'reconciliation', value: '99.99%' },
@@ -79,7 +75,7 @@ export const PROJECTS: Project[] = [
       'Waveform rendering offloaded to a worker + OffscreenCanvas',
       'Non-destructive edit history with instant revert',
     ],
-    img: ridelineImg,
+    img: '',
     metrics: [
       { label: 'sync drift', value: '<5ms' },
       { label: 'session size', value: '300 clips' },

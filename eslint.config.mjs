@@ -1,8 +1,8 @@
-import graphqlPlugin from '@graphql-eslint/eslint-plugin'
-import nxEslintPlugin from '@nx/eslint-plugin'
-import typescriptEslintParser from '@typescript-eslint/parser'
-import nimbusCleanPlugin from 'eslint-plugin-nimbus-clean'
-import globals from 'globals'
+import graphqlPlugin from '@graphql-eslint/eslint-plugin';
+import nxEslintPlugin from '@nx/eslint-plugin';
+import typescriptEslintParser from '@typescript-eslint/parser';
+import nimbusCleanPlugin from 'eslint-plugin-nimbus-clean';
+import globals from 'globals';
 
 const config = [
   {
@@ -26,7 +26,9 @@ const config = [
     },
     settings: {
       'import/resolver': {
-        node: true,
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
         typescript: {},
       },
       react: {
@@ -56,6 +58,13 @@ const config = [
   },
   ...nimbusCleanPlugin.configs.recommended,
   {
+    rules: {
+      'sonarjs/redundant-type-aliases': 'off',
+      'react-refresh/only-export-components': 'off',
+      'unicorn/prefer-logical-operator-over-ternary': 'off',
+    },
+  },
+  {
     files: ['**/*.graphql'],
     languageOptions: {
       parser: graphqlPlugin.parser,
@@ -72,6 +81,6 @@ const config = [
       ],
     },
   },
-]
+];
 
-export default config
+export default config;

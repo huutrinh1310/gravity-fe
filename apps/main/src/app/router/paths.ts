@@ -1,5 +1,9 @@
 export const ROUTES = {
   home: '/',
+  portfolios: {
+    root: '/portfolios',
+    me: '/portfolios/me',
+  },
   projectDetail: (slug: string) => `/projects/${encodeURIComponent(slug)}`,
   projectDetailPattern: '/projects/:slug',
   sections: {

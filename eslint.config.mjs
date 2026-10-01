@@ -27,7 +27,7 @@ const config = [
     settings: {
       'import/resolver': {
         node: {
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          extensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs'],
         },
         typescript: {},
       },
@@ -59,9 +59,14 @@ const config = [
   ...nimbusCleanPlugin.configs.recommended,
   {
     rules: {
-      'sonarjs/redundant-type-aliases': 'off',
+      'prettier/prettier': 'off',
       'react-refresh/only-export-components': 'off',
+      'sonarjs/redundant-type-aliases': 'off',
       'unicorn/prefer-logical-operator-over-ternary': 'off',
+      'perfectionist/sort-objects': 'off',
+      'perfectionist/sort-jsx-props': 'off',
+      'perfectionist/sort-interfaces': 'off',
+      'perfectionist/sort-imports': 'off',
     },
   },
   {

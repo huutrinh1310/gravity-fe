@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -9,6 +9,8 @@ import { HomePage } from './pages/home/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ProjectPage } from './pages/projects/ProjectPage';
 import { DashboardLayout } from './shared/components/layout/DashboardLayout';
+
+import { Portfolio } from './pages/portfolios/Portfolio';
 
 const queryClient = new QueryClient();
 
@@ -27,7 +29,9 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route element={<DashboardLayout />} path={ROUTES.home}>
-                <Route element={<HomePage />} path={ROUTES.home} />
+                <Route element={<HomePage />} path={ROUTES.portfolios.me} />
+                <Route element={<Portfolio />} path={ROUTES.portfolios.root} />
+                <Route element={<Navigate to={ROUTES.portfolios.me} />} path={ROUTES.home} />
               </Route>
               <Route element={<ProjectPage />} path={ROUTES.projectDetailPattern} />
               <Route element={<NotFoundPage />} path="*" />

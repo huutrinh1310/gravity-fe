@@ -2,11 +2,13 @@ import { ChartLine, Dot, HomeIcon, LayoutTemplate, Link } from 'lucide-react';
 
 import { SitebarItem, type SitebarItemProperties } from './SitebarItem';
 
+import { ROUTES } from '../../../app/router/paths';
+
 export default function Sitebar() {
   const sitebars: SitebarItemProperties[] = [
     {
       label: 'Portfolios',
-      href: '/',
+      href: ROUTES.portfolios.root,
       icon: <HomeIcon />,
     },
     {

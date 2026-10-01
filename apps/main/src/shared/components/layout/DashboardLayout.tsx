@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import { Box } from '@mantine/core';
+import { Box, ScrollArea } from '@mantine/core';
 
 import './layout.css';
 
@@ -17,10 +17,10 @@ export function DashboardLayout() {
         <Sitebar />
 
         <Box className="dashboard-content">
-          <Box className="dashboard-scrollbar dashboard-main" component="main">
+          <ScrollArea className="dashboard-main" component="main">
             <Outlet />
             <SiteFooter />
-          </Box>
+          </ScrollArea>
         </Box>
       </Box>
     </Box>

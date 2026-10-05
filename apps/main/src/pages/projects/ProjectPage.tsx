@@ -10,6 +10,8 @@ import { OtherProjects } from '../../shared/components/ProjectCard';
 import { getProject } from '../../shared/data/projects';
 import { useMusicPlayer } from '../../shared/hooks/useMusicPlayer';
 
+import classes from './ProjectPage.module.css';
+
 const ProjectMissing = () => (
   <Stack align="center" className="not-found-page" gap="1rem" justify="center">
     <Box className="not-found-content">
@@ -37,20 +39,20 @@ export function ProjectPage() {
   }
 
   return (
-    <Box className="project-page">
+    <Box className={classes['project-page']}>
       <SiteHeader detail />
-      <Box className="project-page-main" component="main">
-        <Box className="project-intro reveal" component="section">
+      <Box className={classes['project-page-main']} component="main">
+        <Box className={`${classes['project-intro']} reveal`} component="section">
           <Text className="eyebrow" component="p">
             (case study) {project.timeline}
           </Text>
-          <Title className="project-title chrometxt" order={1}>
+          <Title className={`${classes['project-title']} chrometxt`} order={1}>
             {project.title}
           </Title>
-          <Text className="project-overview muted-copy" component="p">
+          <Text className={`${classes['project-overview']} muted-copy`} component="p">
             {project.overview}
           </Text>
-          <Group className="project-stack" gap="0.5rem">
+          <Group className={classes['project-stack']} gap="0.5rem">
             {project.stack.map((item) => (
               <Text key={item} className="tech-pill" component="span">
                 {item}
@@ -58,31 +60,31 @@ export function ProjectPage() {
             ))}
           </Group>
         </Box>
-        <img alt={project.alt} className="case-study-image chrome reveal" height={640} src={project.img} width={1024} />
-        <SimpleGrid className="project-metrics reveal" cols={{ base: 1, xs: 3 }} component="section" spacing="1rem">
+        <img alt={project.alt} className={`${classes['case-study-image']} chrome reveal`} height={640} src={project.img} width={1024} />
+        <SimpleGrid className={`${classes['project-metrics']} reveal`} cols={{ base: 1, xs: 3 }} component="section" spacing="1rem">
           {project.metrics.map((metric) => (
-            <Box key={metric.label} className="metric-block chrome">
-              <Text className="metric-value chrometxt" component="p">
+            <Box key={metric.label} className={`${classes['metric-block']} chrome`}>
+              <Text className={`${classes['metric-value']} chrometxt`} component="p">
                 {metric.value}
               </Text>
-              <Text className="metric-label" component="p">
+              <Text className={classes['metric-label']} component="p">
                 {metric.label}
               </Text>
             </Box>
           ))}
         </SimpleGrid>
-        <SimpleGrid className="project-details" cols={{ base: 1, sm: 2 }} component="section" spacing="2.5rem">
+        <SimpleGrid className={classes['project-details']} cols={{ base: 1, sm: 2 }} component="section" spacing="2.5rem">
           <Box className="reveal">
             <Text className="eyebrow" component="span">
               (a) role
             </Text>
-            <Title className="section-title project-detail-title" order={2}>
+            <Title className={`section-title ${classes['project-detail-title']}`} order={2}>
               What I did
             </Title>
-            <Text className="detail-copy" component="p">
+            <Text className={classes['detail-copy']} component="p">
               {project.role}
             </Text>
-            <Text className="project-tags" component="p">
+            <Text className={classes['project-tags']} component="p">
               {project.tags}
             </Text>
           </Box>
@@ -90,16 +92,16 @@ export function ProjectPage() {
             <Text className="eyebrow" component="span">
               (b) highlights
             </Text>
-            <Title className="section-title project-detail-title" order={2}>
+            <Title className={`section-title ${classes['project-detail-title']}`} order={2}>
               Engineering notes
             </Title>
             <Stack className="highlight-list" component="ul" gap="0.75rem">
               {project.highlights.map((highlight) => (
-                <Group key={highlight} align="flex-start" className="highlight-entry" component="li" gap="0.75rem" wrap="nowrap">
-                  <Text className="highlight-marker" component="span">
+                <Group key={highlight} align="flex-start" className={classes['highlight-entry']} component="li" gap="0.75rem" wrap="nowrap">
+                  <Text className={classes['highlight-marker']} component="span">
                     —
                   </Text>
-                  <Text className="detail-copy" component="span">
+                  <Text className={classes['detail-copy']} component="span">
                     {highlight}
                   </Text>
                 </Group>
@@ -107,8 +109,8 @@ export function ProjectPage() {
             </Stack>
           </Box>
         </SimpleGrid>
-        <Box className="other-work-section" component="section">
-          <Title className="section-title other-work-title" order={2}>
+        <Box className={classes['other-work-section']} component="section">
+          <Title className={`section-title ${classes['other-work-title']}`} order={2}>
             Other work
           </Title>
           <OtherProjects currentSlug={project.slug} />

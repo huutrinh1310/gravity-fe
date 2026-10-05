@@ -1,5 +1,10 @@
 export const ROUTES = {
   home: '/',
+  auth: {
+    login: '/login',
+    register: '/register',
+    oauthCallback: '/oauth/callback',
+  },
   portfolios: {
     root: '/portfolios',
     me: '/portfolios/me',

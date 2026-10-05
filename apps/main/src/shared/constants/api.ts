@@ -4,6 +4,16 @@ export const api = {
     update: '/profiles',
   },
   projects: '/projects',
+  banner: {
+    get: '/banners',
+    update: '/banners',
+    getByProfileId: (profileId: string) => `/banners/profile/${profileId}`,
+  },
+  portfolio: {
+    get: '/portfolios',
+    update: '/portfolios',
+    getByProfileId: (profileId: string) => `/portfolios/profile/${profileId}`,
+  }
 };
 
 export const getApiUrl = (path: string) => {

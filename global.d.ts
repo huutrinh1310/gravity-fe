@@ -4,11 +4,15 @@
 /// <reference types="react-dom" />
 /// <reference types="@welldone-software/why-did-you-render" />
 
+export {};
+
 declare global {
   interface ImportMeta {
-    readonly env: ImportMetaEnvironment;
+    readonly env: ImportMetaEnv;
   }
-  interface ImportMetaEnvironment {
+
+  interface ImportMetaEnv {
+    readonly VITE_API_BASE_URL: string;
     readonly VITE_GITHUB_API_ENDPOINT: string;
     readonly VITE_GITHUB_TOKEN: string;
   }

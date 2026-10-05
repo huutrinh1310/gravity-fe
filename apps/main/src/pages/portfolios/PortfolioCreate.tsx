@@ -1,9 +1,11 @@
-import { Autocomplete, Button, Flex, Group, Modal, Radio, Text, TextInput, Title } from '@mantine/core';
+import { Autocomplete, Button, Flex, Group, Modal, Radio, Text, TextInput } from '@mantine/core';
 
 import { useForm } from '@mantine/form';
 
 import { useDisclosure } from '@mantine/hooks';
 import { PlusIcon } from 'lucide-react';
+import { useNavigate } from 'react-router';
+import { useAuth } from '../../app/providers/auth/AuthProvider';
 
 export interface PortfolioCreateProperties {
   content: string;
@@ -11,6 +13,9 @@ export interface PortfolioCreateProperties {
 
 export function PortfolioCreate({ content }: Readonly<PortfolioCreateProperties>) {
   const [opened, { open, close }] = useDisclosure();
+  const { isAuthenticated } = useAuth();
+
+  const navigate = useNavigate();
 
   const form = useForm({
     mode: 'uncontrolled',
@@ -21,9 +26,27 @@ export function PortfolioCreate({ content }: Readonly<PortfolioCreateProperties>
     open();
   };
 
+  const handleOpenModal = () => {
+    if (!isAuthenticated) {
+      navigate('/login');
+
+      return;
+    }
+    open();
+  };
+
   return (
     <>
-      <Modal opened={opened} onClose={close} title={<Title fz="h3">Create new portfolio</Title>} size="lg">
+      <Modal
+        opened={opened}
+        onClose={close}
+        title={
+          <Text fz="lg" fw={700}>
+            Create new portfolio
+          </Text>
+        }
+        size="lg"
+      >
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <Flex direction="column" gap="md">
             <TextInput
@@ -68,7 +91,7 @@ export function PortfolioCreate({ content }: Readonly<PortfolioCreateProperties>
         </form>
       </Modal>
 
-      <Button className="portfolio-header-button" leftSection={<PlusIcon />} onClick={open}>
+      <Button className="portfolio-header-button" leftSection={<PlusIcon />} onClick={handleOpenModal}>
         {content}
       </Button>
     </>

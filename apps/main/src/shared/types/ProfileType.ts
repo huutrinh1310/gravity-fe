@@ -17,3 +17,16 @@ export interface SkillType {
   id: string;
   name: string;
 }
+
+export interface PortfolioType {
+  id: string;
+  name: string;
+  description: string;
+  imageUrl: string;
+  domainUrl: string;
+  profileId: string;
+  isPublic: boolean;
+  isIntegrated: boolean;
+  templateId: string;
+  lastModified: string;
+}

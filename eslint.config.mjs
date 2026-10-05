@@ -4,6 +4,15 @@ import typescriptEslintParser from '@typescript-eslint/parser';
 import nimbusCleanPlugin from 'eslint-plugin-nimbus-clean';
 import globals from 'globals';
 
+const nimbusRecommendedConfigs = Array.isArray(nimbusCleanPlugin.configs.recommended)
+  ? nimbusCleanPlugin.configs.recommended
+  : [nimbusCleanPlugin.configs.recommended];
+const disabledPerfectionistRules = Object.fromEntries(
+  [...new Set(nimbusRecommendedConfigs.flatMap((preset) => Object.keys(preset.rules ?? {})))]
+    .filter((rule) => rule.startsWith('perfectionist/'))
+    .map((rule) => [rule, 'off'])
+);
+
 const config = [
   {
     ignores: ['**/dist', '.husky', '.idea', '**/coverage', '**/generated'],
@@ -63,10 +72,8 @@ const config = [
       'react-refresh/only-export-components': 'off',
       'sonarjs/redundant-type-aliases': 'off',
       'unicorn/prefer-logical-operator-over-ternary': 'off',
-      'perfectionist/sort-objects': 'off',
-      'perfectionist/sort-jsx-props': 'off',
-      'perfectionist/sort-interfaces': 'off',
-      'perfectionist/sort-imports': 'off',
+      'unicorn/prevent-abbreviations': 'off',
+      ...disabledPerfectionistRules,
     },
   },
   {

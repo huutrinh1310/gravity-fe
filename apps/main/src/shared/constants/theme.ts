@@ -1,6 +1,6 @@
-import type { MantineThemeOverride } from '@mantine/core';
+import { DEFAULT_THEME, mergeMantineTheme, type MantineThemeOverride } from '@mantine/core';
 
-export const theme: MantineThemeOverride = {
+const themeOverride: MantineThemeOverride = {
   colors: {
     primary: [
       'oklch(0.55 0.22 290)',
@@ -28,5 +28,30 @@ export const theme: MantineThemeOverride = {
     ],
   },
   primaryColor: 'primary',
-  autoContrast: true
+  autoContrast: true,
+  components: {
+    AppShell: {
+      defaultProps: {
+        padding: 'md',
+      },
+      styles: {
+        root: {
+          backgroundColor: 'var(--background-gradient)',
+        },
+        navbar: {
+          background: 'inherit',
+        },
+        header: {
+          background: 'inherit',
+        },
+        footer: {
+          background: 'inherit',
+          display: 'flex',
+          width: '100%',
+        },
+      },
+    },
+  },
 };
+
+export const theme: MantineThemeOverride = mergeMantineTheme(DEFAULT_THEME, themeOverride);

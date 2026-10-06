@@ -5,6 +5,7 @@ import { ProjectItem, type ProjectItemProperties } from './ProjectItem';
 import classes from './Portfolio.module.css';
 import { useBannerProfileQuery, usePortfolioProfileQuery } from '../../shared/hooks/useProfile';
 import { useAuth } from '../../app/providers/auth';
+import { PortfolioCard } from './PortfolioCard';
 
 export function PortfolioBanner() {
   const { user } = useAuth();
@@ -51,7 +52,7 @@ export function PortfolioBanner() {
       </Title>
       <Flex className={classes['portfolio-blocks']} gap={'sm'} mb="md">
         {portfolios?.map((item) => (
-          <ProjectItem key={item.id} content={item.name} href={item.domainUrl} lastUpdated={item.lastModified} />
+          <PortfolioCard key={item.id} data={item} />
         ))}
       </Flex>
     </Flex>

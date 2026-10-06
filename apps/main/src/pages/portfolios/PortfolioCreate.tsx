@@ -4,7 +4,7 @@ import { useForm } from '@mantine/form';
 
 import { useDisclosure } from '@mantine/hooks';
 import { PlusIcon } from 'lucide-react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../app/providers/auth/AuthProvider';
 
 export interface PortfolioCreateProperties {

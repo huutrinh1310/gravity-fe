@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import { Box, Button, Flex, Group, Text } from '@mantine/core';
 import { Tag } from '@nx-vite-react-ts-mantine-boilerplate/ui-kit';

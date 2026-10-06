@@ -31,3 +31,22 @@ export const getPortfolioByProfileId = async (profileId: string): Promise<Portfo
 
   return data;
 };
+
+export const getPortfolioById = async (portfolioId: string): Promise<PortfolioType> => {
+  const url = getApiUrl(api.portfolio.getById(portfolioId));
+
+  const data = await apiClient<PortfolioType>(url, {
+    method: 'GET',
+  });
+
+  return data;
+};
+
+export const getProfileById = async (profileId: string): Promise<ProfileType> => {
+  const url = getApiUrl(api.profile.getById(profileId));
+  const data = await apiClient<ProfileType>(url, {
+    method: 'GET',
+  });
+
+  return data;
+};

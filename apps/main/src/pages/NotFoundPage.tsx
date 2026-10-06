@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import { Box, Button, Stack, Text, Title } from '@mantine/core';
 

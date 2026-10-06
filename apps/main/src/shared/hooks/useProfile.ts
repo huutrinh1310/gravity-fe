@@ -2,10 +2,12 @@ import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
 
 import type { PortfolioType, ProfileType } from '../types/ProfileType';
 
-import { getBannerByProfileId, getPortfolioByProfileId, getProfiles } from '../../app/services/profiles.service';
+import { getBannerByProfileId, getPortfolioById, getPortfolioByProfileId, getProfileById, getProfiles } from '../../app/services/profiles.service';
 import type { BannerType } from '../types/Banner.type';
 
-type ProfileQueryOptionsProperties = UseQueryOptions<ProfileType, TError>;
+type QueryOptions<T> =  Omit<UseQueryOptions<T, TError>, 'queryFn' | 'queryKey' | 'refetchOnWindowFocus'>
+
+type ProfileQueryOptionsProperties = QueryOptions<ProfileType>;
 
 export const useProfilesQuery = (queryKey?: string, options?: ProfileQueryOptionsProperties) => {
   const key = `profile-${queryKey ? queryKey : 'default'}`;
@@ -13,11 +15,12 @@ export const useProfilesQuery = (queryKey?: string, options?: ProfileQueryOption
   return useQuery({
     queryFn: async () => getProfiles(),
     queryKey: [key],
+    refetchOnWindowFocus: false,
     ...options,
   });
 };
 
-type BannerQueryOptionsProperties = Omit<UseQueryOptions<BannerType, TError>, 'queryFn' | 'queryKey'>;
+type BannerQueryOptionsProperties = QueryOptions<BannerType>;
 
 /**
  * Fetch banners for a specific profile using the provided profileId.
@@ -27,22 +30,54 @@ type BannerQueryOptionsProperties = Omit<UseQueryOptions<BannerType, TError>, 'q
  */
 export const useBannerProfileQuery = (profileId: string, options?: BannerQueryOptionsProperties) => {
   const key = `banner-profile-${profileId}`;
-  
+
   return useQuery({
     queryFn: async () => getBannerByProfileId(profileId),
     queryKey: [key],
+    refetchOnWindowFocus: false,
     ...options,
   });
 };
 
-type PortfolioQueryOptionsProperties = Omit<UseQueryOptions<PortfolioType[], TError>, 'queryFn' | 'queryKey'>;
+type PortfolioQueryOptionsProperties = QueryOptions<PortfolioType[]>;
 
+/**
+ *
+ * @param profileId
+ * @param options
+ * @returns Portfolio by profileId
+ */
 export const usePortfolioProfileQuery = (profileId: string, options?: PortfolioQueryOptionsProperties) => {
   const key = `portfolio-profile-${profileId}`;
 
   return useQuery({
     queryFn: async () => getPortfolioByProfileId(profileId),
     queryKey: [key],
+    refetchOnWindowFocus: false,
     ...options,
   });
 };
+
+export const useProfileQuery = (profileId: string, options?: ProfileQueryOptionsProperties) => {
+  const key = `profile-${profileId}`;
+
+  return useQuery({
+    queryFn: async () => getProfileById(profileId),
+    queryKey: [key],
+    refetchOnWindowFocus: false,
+    ...options,
+  });
+};
+
+type PortfolioTypeQueryOptionsProperties = QueryOptions<PortfolioType>;
+
+export const usePortfolioByIdQuery = (portfolioId: string, options?: PortfolioTypeQueryOptionsProperties) => {
+    const key = `portfolio-${portfolioId}`;
+
+  return useQuery({
+    queryFn: async () => getPortfolioById(portfolioId),
+    queryKey: [key],
+    refetchOnWindowFocus: false,
+    ...options,
+  });
+}

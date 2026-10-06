@@ -1,11 +1,13 @@
 import { Outlet } from 'react-router-dom';
 
-import { AppShell, Burger, ScrollArea } from '@mantine/core';
+import { Burger, Flex, ScrollArea, Splitter, Stack } from '@mantine/core';
 
 import './layout.css';
 
 import { useDisclosure } from '@mantine/hooks';
-import Sitebar from './Sitebar';
+
+import { CopyrightBlock } from './CopyrightBlock';
+import { Sitebar } from './Sitebar';
 import { SiteFooter } from './SiteFooter';
 import { SiteHeader } from './SiteHeader';
 
@@ -13,19 +15,30 @@ export function DashboardLayout() {
   const [opened, { toggle }] = useDisclosure();
 
   return (
-    <AppShell header={{ height: 57 }} footer={{ height: 60 }} navbar={{ width: 280, breakpoint: 'sm', collapsed: { mobile: !opened } }} padding="md">
-      <AppShell.Header>
+    <Flex direction='column' h='100vh'>
+      <Stack justify='space-between'>
         <SiteHeader />
-        <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-      </AppShell.Header>
-      <AppShell.Navbar>
-        <Sitebar />
-      </AppShell.Navbar>
+        <Burger opened={opened} onClick={toggle} hiddenFrom='sm' size='sm' />
+      </Stack>
 
-      <AppShell.Main component={ScrollArea}>
-        <Outlet />
-      </AppShell.Main>
+      <Splitter
+        w='100%'
+        withHandle={false}
+        lineSize={1}
+        style={{
+          overflow: 'hidden',
+        }}
+      >
+        <Splitter.Pane defaultSize={30} min={0} max={30} component={ScrollArea}>
+          <Sitebar />
+        </Splitter.Pane>
+        <Splitter.Pane defaultSize={70} min={20} p='md' component={ScrollArea}>
+          <Outlet />
+          <CopyrightBlock />
+        </Splitter.Pane>
+      </Splitter>
+
       <SiteFooter />
-    </AppShell>
+    </Flex>
   );
 }

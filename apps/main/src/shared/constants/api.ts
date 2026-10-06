@@ -2,6 +2,7 @@ export const api = {
   profile: {
     get: '/profiles',
     update: '/profiles',
+    getById: (profileId: string) => `/profiles/${profileId}`,
   },
   projects: '/projects',
   banner: {
@@ -12,6 +13,7 @@ export const api = {
   portfolio: {
     get: '/portfolios',
     update: '/portfolios',
+    getById: (profileId: string) => `/portfolios/${profileId}`,
     getByProfileId: (profileId: string) => `/portfolios/profile/${profileId}`,
   }
 };

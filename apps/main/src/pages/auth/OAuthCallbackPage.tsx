@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { Container, Text, Loader, Center } from '@mantine/core';
 import { ROUTES } from '../../app/router/paths';
 import { useAuth } from '../../app/providers/auth/AuthProvider';

@@ -1,5 +1,5 @@
 import { useState, type SubmitEvent } from 'react';
-import { useNavigate, Link } from 'react-router';
+import { useNavigate, Link } from 'react-router-dom';
 import { TextInput, PasswordInput, Button, Divider, Container, Paper, Title, Text, Group } from '@mantine/core';
 import { useAuth } from '../../app/providers/auth/AuthProvider';
 import { ROUTES } from '../../app/router/paths';

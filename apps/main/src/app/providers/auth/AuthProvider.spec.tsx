@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 
 import { MantineProvider } from '@mantine/core';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { OAuthCallbackPage } from '../../../pages/auth/OAuthCallbackPage';

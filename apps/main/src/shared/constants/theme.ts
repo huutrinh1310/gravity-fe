@@ -45,7 +45,7 @@ const themeOverride: MantineThemeOverride = {
           background: 'inherit',
         },
         footer: {
-          background: 'inherit',
+          background: 'var(--background)',
           display: 'flex',
           width: '100%',
         },

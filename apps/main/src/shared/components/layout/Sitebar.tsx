@@ -2,10 +2,10 @@ import { ChartLine, Dot, HomeIcon, LayoutTemplate, Link } from 'lucide-react';
 
 import { SitebarItem, type SitebarItemProperties } from './SitebarItem';
 
+import { Box } from '@mantine/core';
 import { ROUTES } from '../../../app/router/paths';
-import { AppShell, ScrollArea } from '@mantine/core';
 
-export default function Sitebar() {
+export function Sitebar() {
   const sitebars: SitebarItemProperties[] = [
     {
       label: 'Portfolios',
@@ -35,10 +35,10 @@ export default function Sitebar() {
   ];
 
   return (
-    <AppShell.Section component={ScrollArea} grow className="sitebar">
+    <Box className='sitebar'>
       {sitebars.map((item) => (
         <SitebarItem key={item.href} {...item} />
       ))}
-    </AppShell.Section>
+    </Box>
   );
 }
